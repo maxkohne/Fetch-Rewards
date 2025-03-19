@@ -134,7 +134,9 @@ private fun ItemsListScreen(
                     ) {
                         items.forEach { section ->
                             // Header
-                            stickyHeader {
+                            stickyHeader(
+                                key = section.listId
+                            ) {
                                 SectionHeader(
                                     section = section,
                                     modifier = Modifier.animateItem()
