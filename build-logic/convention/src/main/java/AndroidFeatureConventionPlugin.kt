@@ -1,21 +1,23 @@
 import com.android.build.gradle.LibraryExtension
-import com.maxkohne.fetchrewards.convention.libs
+import com.maxkohne.fetchrewards.buildlogic.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
-class AndroidFeatureConventionPlugin : Plugin<Project> {
+internal class AndroidFeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply {
-                apply("fetchrewards.android.library")
-            }
+            // Plugins
+            apply(plugin = "fetchrewards.android.library")
+
+            // Extensions
             extensions.configure<LibraryExtension> {
-                buildFeatures.viewBinding = true
                 testOptions.animationsDisabled = true
             }
 
+            // Dependencies
             dependencies {
                 "implementation"(project(":core:designsystem"))
                 "implementation"(project(":core:ui"))

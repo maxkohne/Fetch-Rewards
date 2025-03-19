@@ -1,4 +1,4 @@
-package com.maxkohne.fetchrewards.convention
+package com.maxkohne.fetchrewards.buildlogic.convention
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project

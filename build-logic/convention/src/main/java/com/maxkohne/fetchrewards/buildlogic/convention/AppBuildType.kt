@@ -1,4 +1,4 @@
-package com.maxkohne.fetchrewards.convention
+package com.maxkohne.fetchrewards.buildlogic.convention
 
 /**
  * This is shared between :app and :benchmarks module to provide configurations type safety.

@@ -1,4 +1,4 @@
-package com.maxkohne.fetchrewards.convention
+package com.maxkohne.fetchrewards.buildlogic.convention
 
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import org.gradle.api.Project

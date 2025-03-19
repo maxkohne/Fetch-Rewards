@@ -1,4 +1,4 @@
-import com.maxkohne.fetchrewards.convention.AppBuildType
+import com.maxkohne.fetchrewards.buildlogic.convention.AppBuildType
 
 plugins {
     alias(libs.plugins.fetchrewards.android.application)

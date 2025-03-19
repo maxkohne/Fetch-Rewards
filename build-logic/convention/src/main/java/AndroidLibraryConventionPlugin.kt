@@ -1,27 +1,27 @@
-
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
-import com.maxkohne.fetchrewards.convention.TARGET_SDK
-import com.maxkohne.fetchrewards.convention.configureKotlinAndroid
-import com.maxkohne.fetchrewards.convention.disableUnnecessaryAndroidTests
-import com.maxkohne.fetchrewards.convention.libs
+import com.maxkohne.fetchrewards.buildlogic.convention.TARGET_SDK
+import com.maxkohne.fetchrewards.buildlogic.convention.configureKotlinAndroid
+import com.maxkohne.fetchrewards.buildlogic.convention.disableUnnecessaryAndroidTests
+import com.maxkohne.fetchrewards.buildlogic.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
 
-class AndroidLibraryConventionPlugin : Plugin<Project> {
+internal class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("com.android.library")
-                apply("org.jetbrains.kotlin.android")
-                apply("kotlin-parcelize")
-                apply("fetchrewards.hilt")
-                apply("fetchrewards.serialization")
-            }
+            // Plugins
+            apply(plugin = "com.android.library")
+            apply(plugin = "org.jetbrains.kotlin.android")
+            apply(plugin = "kotlin-parcelize")
+            apply(plugin = "fetchrewards.hilt")
+            apply(plugin = "fetchrewards.serialization")
 
+            // Extensions
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = TARGET_SDK
@@ -34,6 +34,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryAndroidComponentsExtension> {
                 disableUnnecessaryAndroidTests(target)
             }
+
+            // Dependencies
             dependencies {
                 "implementation"(libs.findLibrary("kotlinx.coroutines.core").get())
                 "implementation"(libs.findLibrary("kotlinx.coroutines.android").get())

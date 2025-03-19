@@ -1,31 +1,20 @@
-
-import com.android.build.gradle.api.AndroidBasePlugin
-import com.maxkohne.fetchrewards.convention.libs
+import com.maxkohne.fetchrewards.buildlogic.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.dependencies
 
-class HiltConventionPlugin : Plugin<Project> {
+internal class HiltConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply("com.google.devtools.ksp")
+            // Plugins
+            apply(plugin = "com.google.devtools.ksp")
+            apply(plugin = "dagger.hilt.android.plugin")
+
+            // Dependencies
             dependencies {
-                add("ksp", libs.findLibrary("dagger.hilt.compiler").get())
-            }
-
-            // Add support for Android Module, base on org.jetbrains.kotlin.jvm
-            pluginManager.withPlugin("org.jetbrains.kotlin.android") {
-                dependencies {
-                    add("implementation", libs.findLibrary("dagger.hilt.core").get())
-                }
-            }
-
-            /** Add support for Android modules, based on [AndroidBasePlugin] */
-            pluginManager.withPlugin("com.android.base") {
-                pluginManager.apply("dagger.hilt.android.plugin")
-                dependencies {
-                    add("implementation", libs.findLibrary("dagger.hilt.android").get())
-                }
+                "implementation"(libs.findLibrary("dagger.hilt.android").get())
+                "ksp"(libs.findLibrary("dagger.hilt.compiler").get())
             }
         }
     }
