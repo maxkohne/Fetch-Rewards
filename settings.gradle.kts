@@ -1,4 +1,6 @@
 pluginManagement {
+    includeBuild("build-logic")
+
     repositories {
         google {
             content {
@@ -19,6 +21,24 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Fetch Rewards"
+rootProject.name = "Fetch-Rewards"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(":app")
- 
+
+// Core
+include(":core:database")
+include(":core:designsystem")
+include(":core:network")
+include(":core:sync:engine")
+include(":core:sync:common")
+include(":core:ui")
+
+// Data
+include(":data:items")
+
+// Feature
+include(":feature:items")
+
+include(":core:util")

@@ -1,0 +1,61 @@
+
+import com.android.build.api.variant.LibraryAndroidComponentsExtension
+import com.android.build.gradle.LibraryExtension
+import com.maxkohne.fetchrewards.convention.TARGET_SDK
+import com.maxkohne.fetchrewards.convention.configureKotlinAndroid
+import com.maxkohne.fetchrewards.convention.disableUnnecessaryAndroidTests
+import com.maxkohne.fetchrewards.convention.libs
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.kotlin
+
+class AndroidLibraryConventionPlugin : Plugin<Project> {
+    override fun apply(target: Project) {
+        with(target) {
+            with(pluginManager) {
+                apply("com.android.library")
+                apply("org.jetbrains.kotlin.android")
+                apply("kotlin-parcelize")
+                apply("fetchrewards.hilt")
+                apply("fetchrewards.serialization")
+            }
+
+            extensions.configure<LibraryExtension> {
+                configureKotlinAndroid(this)
+                defaultConfig.targetSdk = TARGET_SDK
+                defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                testOptions.animationsDisabled = true
+                // The resource prefix is derived from the module name,
+                // so resources inside ":core:module1" must be prefixed with "core_module1_"
+//                resourcePrefix = path.split("""\W""".toRegex()).drop(1).distinct().joinToString(separator = "_").lowercase() + "_"
+            }
+            extensions.configure<LibraryAndroidComponentsExtension> {
+                disableUnnecessaryAndroidTests(target)
+            }
+            dependencies {
+                "implementation"(libs.findLibrary("kotlinx.coroutines.core").get())
+                "implementation"(libs.findLibrary("kotlinx.coroutines.android").get())
+
+                // Unit Testing
+                "testImplementation"(libs.findLibrary("junit").get())
+                "testImplementation"(libs.findLibrary("kotlinx.coroutines.test").get())
+                "testImplementation"(libs.findLibrary("mockito-kotlin").get())
+                "testImplementation"(libs.findLibrary("truth").get())
+                "testImplementation"(libs.findLibrary("turbine").get())
+                "testImplementation"(libs.findLibrary("robolectric").get())
+                "testImplementation"(kotlin("test"))
+
+                // Android Testing
+                "androidTestImplementation"(libs.findLibrary("test.runner").get())
+                "androidTestImplementation"(libs.findLibrary("kotlinx.coroutines.test").get())
+                "androidTestImplementation"(libs.findLibrary("mockito-kotlin").get())
+                "androidTestImplementation"(libs.findLibrary("truth").get())
+                "androidTestImplementation"(libs.findLibrary("turbine").get())
+                "androidTestImplementation"(libs.findLibrary("robolectric").get())
+                "androidTestImplementation"(kotlin("test"))
+            }
+        }
+    }
+}
