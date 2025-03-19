@@ -19,7 +19,7 @@ abstract class ItemsDao {
     abstract suspend fun upsertItems(items: List<ItemEntity>)
 
     @Query("SELECT id FROM items")
-    abstract suspend fun getAllIds() : List<Long>
+    abstract suspend fun getAllIds(): List<Long>
 
     @Query("DELETE FROM items WHERE id in (:ids)")
     abstract suspend fun deleteByIds(ids: Set<Long>)

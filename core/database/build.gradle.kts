@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.maxkohne.fetchrewards.core.database"
-}
-
-dependencies {
+    packaging {
+        resources.excludes.add("META-INF/*")
+    }
 }
