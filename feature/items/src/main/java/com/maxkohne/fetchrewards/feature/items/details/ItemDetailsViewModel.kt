@@ -27,14 +27,8 @@ internal class ItemDetailsViewModel @Inject constructor(
             repository.getItemFlow(itemId).collect { item ->
                 if (item == null) {
                     _eventsFlow.setValue(ItemDetailsEvent.NotFound)
-                    return@collect
-                }
-
-                _uiStateFlow.update {
-                    it.copy(
-                        name = item.name,
-                        listId = item.listId,
-                    )
+                } else {
+                    _uiStateFlow.update { it.fromItem(item) }
                 }
             }
         }
