@@ -52,10 +52,6 @@ fun ItemsListScreenRoute(
 ) {
     val viewModel = hiltViewModel<ItemListViewModel>()
 
-    LaunchedEffect(Unit) {
-        viewModel.syncItems()
-    }
-
     ItemsListScreen(
         uiStateFlow = viewModel.uiStateFlow,
         itemsFlow = viewModel.itemsFlow,

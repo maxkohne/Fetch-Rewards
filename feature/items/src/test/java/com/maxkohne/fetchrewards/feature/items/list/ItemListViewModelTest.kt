@@ -25,6 +25,9 @@ internal class ItemListViewModelTest {
 
     @Before
     fun setup() {
+        mockItemRepository.stub {
+            onBlocking { syncItems() } doReturn SyncResult.Success
+        }
         viewModel = ItemListViewModel(
             itemRepository = mockItemRepository,
             savedStateHandle = mockSavedStateHandle,
@@ -49,6 +52,7 @@ internal class ItemListViewModelTest {
 
         turbineScope {
             val uiStateFlow = viewModel.uiStateFlow.testIn(backgroundScope)
+
             Truth.assertThat(uiStateFlow.awaitItem().isLoading).isFalse()
 
             viewModel.syncItems()

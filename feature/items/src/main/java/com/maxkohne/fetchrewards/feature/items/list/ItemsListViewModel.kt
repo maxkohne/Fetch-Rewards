@@ -55,6 +55,10 @@ internal class ItemListViewModel @Inject constructor(
 
     private var syncJob: Job? = null
 
+    init {
+        syncItems()
+    }
+
     fun searchItems(searchQuery: String) {
         this.searchQuery = searchQuery
     }

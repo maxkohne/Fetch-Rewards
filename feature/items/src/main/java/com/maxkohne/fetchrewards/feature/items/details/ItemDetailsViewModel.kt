@@ -4,16 +4,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.maxkohne.fetchrewards.core.ui.event.EventFlow
 import com.maxkohne.fetchrewards.data.items.ItemRepository
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-internal class ItemDetailsViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = ItemDetailsViewModel.ItemDetailsViewModelFactory::class)
+internal class ItemDetailsViewModel @AssistedInject constructor(
     private val repository: ItemRepository,
+    @Assisted private val itemId: Long,
 ) : ViewModel() {
 
     private val _uiStateFlow = MutableStateFlow(ItemsDetailsUiState())
@@ -21,6 +24,10 @@ internal class ItemDetailsViewModel @Inject constructor(
 
     private val _eventsFlow = EventFlow<ItemDetailsEvent>()
     val eventsFlow = _eventsFlow.asFlow()
+
+    init {
+        getItem(itemId)
+    }
 
     fun getItem(itemId: Long) {
         viewModelScope.launch {
@@ -32,5 +39,10 @@ internal class ItemDetailsViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    @AssistedFactory
+    interface ItemDetailsViewModelFactory {
+        fun create(itemId: Long): ItemDetailsViewModel
     }
 }
