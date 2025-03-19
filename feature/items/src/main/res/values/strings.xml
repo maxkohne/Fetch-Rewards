@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sync_error_general">Oops. Something went wrong. Please try again.</string>
+    <string name="sync_error_server_down">Fetch Reward\'s servers are currently down or under maintenance</string>
+    <string name="sync_error_connection">Cannot perform action while offline</string>
+    <string name="sync_error_forbidden">You are not permitted to access this data</string>
+    <string name="sync_error_storage_full">Storage is full</string>
+    <string name="error_not_found">Item not found</string>
+    <string name="search">Search</string>
+    <string name="item_placeholder">Item %1$s</string>
+    <string name="id_placeholder">ID: %1$s</string>
+</resources>
