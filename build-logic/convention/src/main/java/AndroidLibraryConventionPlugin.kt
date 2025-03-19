@@ -39,10 +39,12 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 "implementation"(libs.findLibrary("kotlinx.coroutines.android").get())
 
                 // Unit Testing
-                "testImplementation"(libs.findLibrary("test.core").get())
-                "testImplementation"(libs.findLibrary("test.runner").get())
-                "testImplementation"(libs.findLibrary("test.junit").get())
-                "testImplementation"(libs.findLibrary("test.rules").get())
+                "testImplementation"(libs.findLibrary("androidx.test.core").get())
+                "testImplementation"(libs.findLibrary("androidx.test.espresso.core").get())
+                "testImplementation"(libs.findLibrary("androidx.test.junit").get())
+                "testImplementation"(libs.findLibrary("androidx.test.rules").get())
+                "testImplementation"(libs.findLibrary("androidx.test.runner").get())
+                "testImplementation"(libs.findLibrary("androidx.test.uiautomator").get())
                 "testImplementation"(libs.findLibrary("junit").get())
                 "testImplementation"(libs.findLibrary("kotlinx.coroutines.test").get())
                 "testImplementation"(libs.findLibrary("mockito-kotlin").get())
@@ -52,10 +54,12 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 "testImplementation"(kotlin("test"))
 
                 // Android Testing
-                "androidTestImplementation"(libs.findLibrary("test.core").get())
-                "androidTestImplementation"(libs.findLibrary("test.runner").get())
-                "androidTestImplementation"(libs.findLibrary("test.junit").get())
-                "androidTestImplementation"(libs.findLibrary("test.rules").get())
+                "androidTestImplementation"(libs.findLibrary("androidx.test.core").get())
+                "androidTestImplementation"(libs.findLibrary("androidx.test.espresso.core").get())
+                "androidTestImplementation"(libs.findLibrary("androidx.test.junit").get())
+                "androidTestImplementation"(libs.findLibrary("androidx.test.rules").get())
+                "androidTestImplementation"(libs.findLibrary("androidx.test.runner").get())
+                "androidTestImplementation"(libs.findLibrary("androidx.test.uiautomator").get())
                 "androidTestImplementation"(libs.findLibrary("kotlinx.coroutines.test").get())
                 "androidTestImplementation"(libs.findLibrary("mockito-kotlin").get())
                 "androidTestImplementation"(libs.findLibrary("truth").get())
