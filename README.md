@@ -8,7 +8,8 @@ This is a multi-module project using Gradle convention plugins that share logic 
 - https://developer.squareup.com/blog/herding-elephants/
 - https://developer.android.com/topic/modularization
 
-This project is overengineered on purpose (multi-modules, Room, etc) just to showcase my expertise in these areas. In a project this small, these technologies are very much overkill.
+**NOTE:**
+*This project is overengineered on purpose (multi-modules, Room, etc) just to showcase my expertise in these areas. In a project this small, these technologies are very much overkill.*
 
 ## Features
 
