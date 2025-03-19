@@ -7,7 +7,7 @@ import com.maxkohne.fetchrewards.core.database.items.ItemEntity
 import com.maxkohne.fetchrewards.core.database.items.ItemsDao
 
 @Database(
-    exportSchema = false, // TODO set to true for AutoMigrations. false for now to avoid commiting json files
+    exportSchema = true,
     entities = [
         ItemEntity::class
     ],
