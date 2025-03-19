@@ -6,11 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.maxkohne.fetchrewards.core.sync.common.SyncError
 import com.maxkohne.fetchrewards.core.sync.common.SyncResult
 import com.maxkohne.fetchrewards.core.ui.event.EventFlow
-import com.maxkohne.fetchrewards.core.util.DefaultDispatcher
-import com.maxkohne.fetchrewards.data.items.Item
 import com.maxkohne.fetchrewards.data.items.ItemRepository
+import com.maxkohne.fetchrewards.feature.items.list.usecase.GetItemsListSectionsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -20,14 +18,13 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 internal class ItemListViewModel @Inject constructor(
     private val itemRepository: ItemRepository,
     private val savedStateHandle: SavedStateHandle,
-    @DefaultDispatcher private val defaultDispatcher: CoroutineDispatcher
+    private val getItemsListSectionsUseCase: GetItemsListSectionsUseCase,
 ) : ViewModel() {
 
     companion object {
@@ -42,7 +39,7 @@ internal class ItemListViewModel @Inject constructor(
     val itemsFlow = savedStateHandle.getStateFlow(STATE_SEARCH_QUERY, searchQuery)
         .flatMapLatest { searchQuery ->
             itemRepository.getAllItemsFlow().map { items ->
-                items.toSections(searchQuery = searchQuery)
+                getItemsListSectionsUseCase.execute(items, searchQuery)
             }
         }.stateIn(
             scope = viewModelScope,
@@ -57,10 +54,6 @@ internal class ItemListViewModel @Inject constructor(
     val eventsFlow = _eventsFlow.asFlow()
 
     private var syncJob: Job? = null
-
-    init {
-        syncItems()
-    }
 
     fun searchItems(searchQuery: String) {
         this.searchQuery = searchQuery
@@ -94,35 +87,4 @@ internal class ItemListViewModel @Inject constructor(
         }
     }
 
-    private suspend fun List<Item>.toSections(searchQuery: String): List<ItemsListUiState.Section> {
-        val isSearchApplied = searchQuery.isNotBlank()
-
-        // Run on default dispatcher since these are heavy in-memory computations
-        return withContext(defaultDispatcher) {
-            mapNotNull {
-                // Filter out items without names
-                val name = it.name
-                if (name.isNullOrBlank()) return@mapNotNull null
-
-                // Filter by search query
-                if (isSearchApplied && !name.contains(searchQuery, ignoreCase = true)) {
-                    return@mapNotNull null
-                }
-
-                // Convert to ui item
-                it.toUiItem(name)
-            }.sortedWith(
-                // Sort by listID then name
-                compareBy<ItemsListUiState.UiItem> { it.listId }
-                    .thenBy { it.name }
-            ).groupBy { it.listId } // Group by listID
-                .map { (listId, items) ->
-                    // Convert to section
-                    ItemsListUiState.Section(
-                        listId = listId.toString(),
-                        items = items
-                    )
-                }
-        }
-    }
 }

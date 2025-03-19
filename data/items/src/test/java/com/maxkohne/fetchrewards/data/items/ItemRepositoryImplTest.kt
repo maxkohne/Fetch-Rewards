@@ -12,17 +12,14 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Mockito.anyList
 import org.mockito.Mockito.mock
-import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.any
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.doSuspendableAnswer
 import org.mockito.kotlin.stub
 import org.mockito.kotlin.verify
 
-@RunWith(MockitoJUnitRunner::class)
 internal class ItemRepositoryImplTest {
 
     // Mocks
@@ -88,7 +85,7 @@ internal class ItemRepositoryImplTest {
                     executeApiCall = any(),
                     saveResponse = any()
                 )
-            } doSuspendableAnswer  {
+            } doSuspendableAnswer {
                 val executeApiCall = it.getArgument<suspend () -> List<ItemResponse>>(0)
                 val saveResponse = it.getArgument<suspend (List<ItemResponse>) -> Unit>(1)
 
