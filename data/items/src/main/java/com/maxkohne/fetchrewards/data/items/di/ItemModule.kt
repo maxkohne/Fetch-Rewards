@@ -1,8 +1,8 @@
-package com.maxkohne.fetchrewards.data.di
+package com.maxkohne.fetchrewards.data.items.di
 
-import com.maxkohne.fetchrewards.data.ItemRepository
-import com.maxkohne.fetchrewards.data.ItemRepositoryImpl
-import com.maxkohne.fetchrewards.data.api.ItemsApi
+import com.maxkohne.fetchrewards.data.items.ItemRepository
+import com.maxkohne.fetchrewards.data.items.ItemRepositoryImpl
+import com.maxkohne.fetchrewards.data.items.api.ItemsApi
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

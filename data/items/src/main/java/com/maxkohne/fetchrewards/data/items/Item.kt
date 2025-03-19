@@ -1,4 +1,4 @@
-package com.maxkohne.fetchrewards.data
+package com.maxkohne.fetchrewards.data.items
 
 data class Item(
     val id: Long,

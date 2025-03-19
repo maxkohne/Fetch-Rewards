@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.maxkohne.fetchrewards.data"
+    namespace = "com.maxkohne.fetchrewards.data.items"
 }
 
 dependencies {

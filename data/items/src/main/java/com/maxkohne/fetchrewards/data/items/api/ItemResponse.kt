@@ -1,4 +1,4 @@
-package com.maxkohne.fetchrewards.data.api
+package com.maxkohne.fetchrewards.data.items.api
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

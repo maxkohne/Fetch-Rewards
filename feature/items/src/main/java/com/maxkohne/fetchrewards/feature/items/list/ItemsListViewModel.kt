@@ -7,8 +7,8 @@ import com.maxkohne.fetchrewards.core.sync.common.SyncError
 import com.maxkohne.fetchrewards.core.sync.common.SyncResult
 import com.maxkohne.fetchrewards.core.ui.event.EventFlow
 import com.maxkohne.fetchrewards.core.util.DefaultDispatcher
-import com.maxkohne.fetchrewards.data.Item
-import com.maxkohne.fetchrewards.data.ItemRepository
+import com.maxkohne.fetchrewards.data.items.Item
+import com.maxkohne.fetchrewards.data.items.ItemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Job

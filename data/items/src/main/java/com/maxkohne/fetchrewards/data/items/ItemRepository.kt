@@ -1,11 +1,11 @@
-package com.maxkohne.fetchrewards.data
+package com.maxkohne.fetchrewards.data.items
 
 import com.maxkohne.fetchrewards.core.database.items.ItemsDao
 import com.maxkohne.fetchrewards.core.sync.common.SyncResult
 import com.maxkohne.fetchrewards.core.sync.engine.SyncEngine
-import com.maxkohne.fetchrewards.data.api.ItemsApi
-import com.maxkohne.fetchrewards.data.mapper.toEntity
-import com.maxkohne.fetchrewards.data.mapper.toItem
+import com.maxkohne.fetchrewards.data.items.api.ItemsApi
+import com.maxkohne.fetchrewards.data.items.mapper.toEntity
+import com.maxkohne.fetchrewards.data.items.mapper.toItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map

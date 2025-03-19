@@ -1,6 +1,6 @@
 package com.maxkohne.fetchrewards.feature.items.list
 
-import com.maxkohne.fetchrewards.data.Item
+import com.maxkohne.fetchrewards.data.items.Item
 
 internal data class ItemsListUiState(
     val searchQuery: String = "",

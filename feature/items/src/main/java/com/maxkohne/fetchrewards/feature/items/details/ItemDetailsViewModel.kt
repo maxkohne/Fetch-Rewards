@@ -3,7 +3,7 @@ package com.maxkohne.fetchrewards.feature.items.details
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.maxkohne.fetchrewards.core.ui.event.EventFlow
-import com.maxkohne.fetchrewards.data.ItemRepository
+import com.maxkohne.fetchrewards.data.items.ItemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

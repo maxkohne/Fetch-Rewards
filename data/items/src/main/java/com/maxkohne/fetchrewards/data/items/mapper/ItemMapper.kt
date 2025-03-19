@@ -1,8 +1,8 @@
-package com.maxkohne.fetchrewards.data.mapper
+package com.maxkohne.fetchrewards.data.items.mapper
 
 import com.maxkohne.fetchrewards.core.database.items.ItemEntity
-import com.maxkohne.fetchrewards.data.Item
-import com.maxkohne.fetchrewards.data.api.ItemResponse
+import com.maxkohne.fetchrewards.data.items.Item
+import com.maxkohne.fetchrewards.data.items.api.ItemResponse
 
 internal fun ItemResponse.toEntity() = ItemEntity(
     id = id,

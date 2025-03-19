@@ -25,6 +25,7 @@ rootProject.name = "Fetch-Rewards"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
+// App
 include(":app")
 
 // Core
@@ -34,11 +35,10 @@ include(":core:network")
 include(":core:sync:engine")
 include(":core:sync:common")
 include(":core:ui")
+include(":core:util")
 
 // Data
 include(":data:items")
 
 // Feature
 include(":feature:items")
-
-include(":core:util")

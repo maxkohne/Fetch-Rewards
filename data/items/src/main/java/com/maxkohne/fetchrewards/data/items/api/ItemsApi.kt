@@ -1,4 +1,4 @@
-package com.maxkohne.fetchrewards.data.api
+package com.maxkohne.fetchrewards.data.items.api
 
 import retrofit2.http.GET
 
