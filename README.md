@@ -3,7 +3,7 @@
 ## Overview
 This project implements the Fetch Rewards Mobile Coding Challenge, which involves fetching and displaying a list of items from a given API. The app retrieves data, filters out invalid entries, and presents a grouped and sorted list in a user-friendly UI. The requirements are outlined in https://fetch-hiring.s3.amazonaws.com/mobile.html.
 
-This is a multi-module project using Gradle convention plugins share logic between modules. More can be learned from:
+This is a multi-module project using Gradle convention plugins that share logic between modules. More can be learned from:
 - https://docs.gradle.org/current/samples/sample_convention_plugins.html
 - https://developer.squareup.com/blog/herding-elephants/
 - https://developer.android.com/topic/modularization
