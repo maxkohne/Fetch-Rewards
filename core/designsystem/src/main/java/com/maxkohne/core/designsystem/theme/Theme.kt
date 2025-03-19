@@ -1,6 +1,5 @@
-package com.maxkohne.fetchrewards.ui.theme
+package com.maxkohne.core.designsystem.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

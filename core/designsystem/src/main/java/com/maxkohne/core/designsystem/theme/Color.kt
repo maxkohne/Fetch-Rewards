@@ -1,4 +1,4 @@
-package com.maxkohne.fetchrewards.ui.theme
+package com.maxkohne.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 

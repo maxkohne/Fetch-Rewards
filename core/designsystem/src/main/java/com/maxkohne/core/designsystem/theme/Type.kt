@@ -1,4 +1,4 @@
-package com.maxkohne.fetchrewards.ui.theme
+package com.maxkohne.core.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
