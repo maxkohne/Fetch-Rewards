@@ -12,10 +12,10 @@ internal class GetItemsListSectionsUseCase @Inject constructor(
     @DefaultDispatcher private val defaultDispatcher: CoroutineDispatcher
 ) {
     suspend fun execute(items: List<Item>, searchQuery: String): List<ItemsListUiState.Section> {
-        // Run on default dispatcher since these are heavy in-memory computations
         val sortComparator = compareBy<ItemsListUiState.UiItem> { it.listId }
             .thenBy { it.name }
 
+        // Run on default dispatcher since these are heavy in-memory computations
         return withContext(defaultDispatcher) {
             items.asSequence()
                 .filter { !it.name.isNullOrBlank() }
