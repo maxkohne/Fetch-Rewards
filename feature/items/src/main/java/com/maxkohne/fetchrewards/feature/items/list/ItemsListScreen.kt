@@ -179,7 +179,7 @@ private fun EmptyView(
             contentDescription = null,
         )
         Text(
-            text = "No items",
+            text = stringResource(R.string.no_items),
             fontSize = MaterialTheme.typography.titleLarge.fontSize,
             modifier = Modifier.padding(8.dp)
         )
