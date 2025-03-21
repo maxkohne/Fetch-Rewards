@@ -11,8 +11,8 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
-private val JAVA_VERSION = JavaVersion.VERSION_17
-private val JVM_TARGET = JvmTarget.JVM_17
+private val JAVA_VERSION = JavaVersion.VERSION_11
+private val JVM_TARGET = JvmTarget.JVM_11
 private const val MIN_SDK = 24
 private const val COMPILE_SDK = 35
 internal const val TARGET_SDK = 35
