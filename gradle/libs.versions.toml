@@ -2,7 +2,7 @@
 # Tooling
 androidGradlePlugin = "8.9.0"
 androidTools = "31.9.0" # https://mvnrepository.com/artifact/com.android.tools/common
-ksp = "2.1.10-1.0.31" # https://github.com/google/ksp
+ksp = "2.1.20-1.0.31" # https://github.com/google/ksp
 
 # Androidx Core (https://developer.android.com/jetpack/androidx/versions)
 activity = "1.10.1" # https://developer.android.com/jetpack/androidx/releases/activity
@@ -11,10 +11,10 @@ navigation = "2.8.9" # https://developer.android.com/jetpack/androidx/releases/n
 
 # Hilt
 hiltAndroidx = "1.2.0" # https://developer.android.com/jetpack/androidx/releases/hilt
-hiltDagger = "2.55" # https://github.com/google/dagger
+hiltDagger = "2.56" # https://github.com/google/dagger
 
 # Kotlin
-kotlin = "2.1.10" # https://github.com/JetBrains/kotlin
+kotlin = "2.1.20" # https://github.com/JetBrains/kotlin
 kotlinxCoroutines = "1.10.1" # https://github.com/Kotlin/kotlinx.coroutines
 kotlinxSerializationJson = "1.8.0" # https://github.com/Kotlin/kotlinx.serialization
 
